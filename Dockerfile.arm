@@ -1,7 +1,5 @@
-FROM hypriot/rpi-node:7.4.0
+FROM hypriot/rpi-node:7.4.0-slim
 
 WORKDIR /code
-COPY package.json /code
-RUN npm install
-COPY . /code
+COPY tmp/ /code
 CMD ["node", "app.js"]
