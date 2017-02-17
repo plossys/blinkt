@@ -15,14 +15,24 @@ To start the container, type:
 docker run -v /sys:/sys plossys/blinkt
 ```
 
-## Start as a Docker swarm service
+## Swarm mode
 
 To start it in a Docker swarm, type:
 
+### Start service
+
 ```bash
-docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys plossys/blinkt
+docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys plossys/blinkt:0.0.3
 ```
+
+### Scale service
 
 ```bash
 docker service scale blinkt=3
+```
+
+### Rolling updates
+
+```bash
+docker service update --image plossys/blinkt:0.0.5 blinkt
 ```
