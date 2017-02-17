@@ -15,7 +15,7 @@ if [ $ARCH == "amd64" ]; then
   set -e
 
   echo "Downloading manifest-tool"
-  wget https://github.com/estesp/manifest-tool/releases/download/v0.4.0/manifest-tool-amd64-linux
+  wget https://github.com/estesp/manifest-tool/releases/download/v0.4.0/manifest-tool-linux-amd64
   mv manifest-tool-amd64-linux manifest-tool
   chmod +x manifest-tool
   ./manifest-tool
