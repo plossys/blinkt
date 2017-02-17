@@ -8,12 +8,6 @@ var brightness = 0.1;
 
 leds.setup();
 leds.clearAll();
-setInterval(() => {
-	leds.setAllPixels(0, 156, 0, 0.1);
-	leds.sendUpdate();
-//	leds.sendUpdate();
-}, 1000);
-
 
 var lightsOff = function () {
   leds.setAllPixels(0, 0, 0, 0.1);
@@ -44,12 +38,11 @@ setInterval(function () {
   let red, green, blue;
   for (var i = 0; i < NUM_LEDS; i++) {
     [red, green, blue] = wheel(((i * 256 / NUM_LEDS) + offset) % 256);
-console.log(red, green, blue);
     leds.setPixel(i, red, green, blue, brightness)
   }
 
+	offset++;
   leds.sendUpdate();
-//  leds.sendUpdate();
 }, 1000 / 30);
 
 console.log('Rainbow started. Press <ctrl>+C to exit.');
