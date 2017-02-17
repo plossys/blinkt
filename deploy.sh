@@ -28,7 +28,7 @@ if [ $ARCH == "amd64" ]; then
 
   echo "Pushing manifest plossys/blinkt:latest"
   ./manifest-tool push from-args \
-    --platforms linux/amd64,windows/amd64 \
+    --platforms linux/amd64,linux/arm \
     --template plossys/blinkt:OS-ARCH-$TRAVIS_TAG \
     --target plossys/blinkt:latest
 fi
