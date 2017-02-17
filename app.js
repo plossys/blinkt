@@ -53,7 +53,7 @@ updateInterval = setInterval(function () {
   }
   leds.sendUpdate();
   leds.sendUpdate();
-  offset++;
+  offset += 3;
 }, 1000 / 30);
 
 console.log('Rainbow started. Press <ctrl>+C to exit.');
