@@ -4,12 +4,17 @@
 
 Show a cycling rainbow with Blinkt! LED strip.
 
+- [Dockerfile.amd64](https://github.com/plossys/blinkt/blob/master/Dockerfile.amd64)
+- [Dockerfile.arm](https://github.com/plossys/blinkt/blob/master/Dockerfile.arm)
+
+## Build locally
+
 ```bash
 npm install
 sudo node app.js
 ```
 
-## Starting the Docker container
+## Start the Docker container
 
 To start the container, type:
 
