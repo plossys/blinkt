@@ -40,6 +40,12 @@ docker service scale blinkt=3
 
 ### Rolling updates
 
+Rolling updates are [configured at start time](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/) by setting `--update-delay`:
+
+```bash
+docker service create --name blinkt --update-delay 10s --mount type=bind,src=/sys,dst=/sys plossys/blinkt:0.0.3
+```
+
 ```bash
 docker service update --image plossys/blinkt:0.0.5 blinkt
 ```
