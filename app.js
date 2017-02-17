@@ -18,7 +18,7 @@ setInterval(() => {
 var lightsOff = function () {
   leds.setAllPixels(0, 0, 0, 0.1);
   leds.sendUpdate();
-//  leds.sendUpdate();
+  leds.sendUpdate();
 }
 
 var signals = {
