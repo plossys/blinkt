@@ -1,0 +1,17 @@
+{
+  "name": "plossys-blinkt",
+  "author": "SEAL Systems",
+  "description": "PLOSSYS Blinkt!",
+  "version": "0.0.1",
+  "keywords": [
+    "blinkt"
+  ],
+  "private": false,
+  "dependencies": {
+    "node-blinkt": "sealsystems/node-blinkt#sysfs"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "main": "app.js"
+}
