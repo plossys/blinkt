@@ -22,7 +22,7 @@ const signals = {
   'SIGTERM': 15
 };
 
-const shutdown(signal, value) {
+const shutdown = function (signal, value) {
   console.log('Stopped by ' + signal);
   clearInterval(updateInterval);
   lightsOff();
