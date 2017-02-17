@@ -1,5 +1,5 @@
 # PLOSSYS Blinkt!
-[![This image on DockerHub](https://img.shields.io/docker/pulls/stefanscherer/winspector.svg)](https://hub.docker.com/r/stefanscherer/winspector/)
+[![This image on DockerHub](https://img.shields.io/docker/pulls/plossys/blinkt.svg)](https://hub.docker.com/r/plossys/blinkt/)
 [![Build Status](https://travis-ci.org/plossys/blinkt.svg?branch=master)](https://travis-ci.org/plossys/blinkt)
 
 Show a cycling rainbow with Blinkt! LED strip.
