@@ -23,7 +23,7 @@ var signals = {
 function shutdown(signal, value) {
   console.log('Stopped by ' + signal);
   lightsOff();
-  process.nextTick(function () { process.exit(0); });
+  setTimeout(() => { process.exit(0); }, 1000);
 }
 
 Object.keys(signals).forEach(function (signal) {
@@ -37,8 +37,9 @@ var offset = 0;
 setInterval(function () {
   let red, green, blue;
   for (var i = 0; i < NUM_LEDS; i++) {
-    [red, green, blue] = wheel(((i * 256 / NUM_LEDS) + offset) % 256);
-    leds.setPixel(i, red, green, blue, brightness)
+    // [red, green, blue] = wheel(((i * 256 / NUM_LEDS) + offset) % 256);
+    // leds.setPixel(i, red, green, blue, brightness)
+    leds.setPixel(i, 100, 50, 200, .5)
   }
 
 	offset++;
