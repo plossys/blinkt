@@ -1,4 +1,4 @@
-# rainbow
+# PLOSSYS Blinkt!
 
 Show a cycling rainbow with Blinkt! LED strip.
 
@@ -12,14 +12,17 @@ sudo node app.js
 To start the container, type:
 
 ```
-docker run --privileged -v /sys/class/gpio/:/sys/class/gpio/ plossys/blinkt
+docker run -v /sys:/sys plossys/blinkt
 ```
 
-To run the container without the `--privileged` option, allow everyone to write to the GPIO sysfs folders:
+## Start as a Docker swarm service
 
-```
-sudo chmod -R a+w /sys/class/gpio/
-sudo chmod -R a+w /sys/devices/platform/soc/3f200000.gpio/gpio
+To start it in a Docker swarm, type:
+
+```bash
+docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys plossys/blinkt
 ```
 
-Now, you can run the container in swarm mode, too!
+```bash
+docker service scale blinkt=3
+```
