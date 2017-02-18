@@ -66,4 +66,15 @@ suite('stack', () => {
       done();
     }, 10);
   });
+
+  test('removes \'plossys/blinkt:0.0.1\' from container list.', (done) => {
+    images = [{ Image: 'plossys/blinkt:0.0.1' }];
+
+    stack(1);
+
+    setTimeout(() => {
+      assert.that(blinktColors).is.equalTo([]);
+      done();
+    }, 10);
+  });
 });
