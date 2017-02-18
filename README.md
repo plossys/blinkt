@@ -64,7 +64,7 @@ docker run -it -e "INTERVAL=500" -v /sys:/sys -v /var/run/docker.sock:/var/run/d
 
 ### COLORS
 
-To define custom colors for containers, set the `COLORS` environment variable. It must be a JSON object with image names as properties. Each property must contain an array with 3 values ranging between 0 and 255.
+To define custom colors for containers, set the `COLORS` environment variable. It must be a JSON object with image names as properties. Each property must contain an array with 3 values ranging from 0 to 255, that represent the values for `red`, `green`, `blue`.
 
 To set the color for containers with the image `plossys/foo:v1` to red, type:
 
