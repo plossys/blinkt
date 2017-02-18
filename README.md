@@ -3,24 +3,17 @@
 [![Build Status](https://travis-ci.org/plossys/blinkt.svg?branch=master)](https://travis-ci.org/plossys/blinkt)
 [![This image on DockerHub](https://img.shields.io/docker/pulls/plossys/blinkt.svg)](https://hub.docker.com/r/plossys/blinkt/)
 
-Signals the running Docker containers with Blinkt! LED strip.
+Visualizes the running Docker containers with Blinkt! LED strip.
 
 - [Dockerfile.amd64](https://github.com/plossys/blinkt/blob/master/Dockerfile.amd64)
 - [Dockerfile.arm](https://github.com/plossys/blinkt/blob/master/Dockerfile.arm)
-
-## Run locally
-
-```bash
-npm install
-sudo node app.js
-```
 
 ## Start the Docker container
 
 To start the container, type:
 
 ```
-docker run -v /sys:/sys plossys/blinkt
+docker run -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
 ```
 
 ## Swarm mode
@@ -30,7 +23,7 @@ To start it in a Docker swarm, type:
 ### Start service
 
 ```bash
-docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys plossys/blinkt:0.0.3
+docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock plossys/blinkt:0.0.3
 ```
 
 ### Scale service
@@ -44,7 +37,7 @@ docker service scale blinkt=3
 Rolling updates are [configured at start time](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/) by setting `--update-delay`:
 
 ```bash
-docker service create --name blinkt --update-delay 10s --mount type=bind,src=/sys,dst=/sys plossys/blinkt:0.0.3
+docker service create --name blinkt --update-delay 10s --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock plossys/blinkt:0.0.3
 ```
 
 ```bash
