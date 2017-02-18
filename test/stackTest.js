@@ -23,8 +23,15 @@ suite('stack', () => {
     images = [];
   });
 
-  test('is a function', (done) => {
+  test('is a function.', (done) => {
     assert.that(stack).is.ofType('function');
+    done();
+  });
+
+  test('throws an error if interval is missing.', (done) => {
+    assert.that(() => {
+      stack();
+    }).is.throwing('Interval is missing.');
     done();
   });
 

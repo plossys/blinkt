@@ -51,3 +51,11 @@ To run it on _all nodes_ in a swarm cluster, type:
 ```bash
 docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock --mode global plossys/blinkt:0.0.3
 ```
+
+## Environment variables
+
+You can change the update interval via the environment variable `INTERVAL`. To change it to 0.5s (500 milliseconds), type:
+
+```
+docker run -it -e "INTERVAL=500" -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+```

@@ -5,7 +5,7 @@ const assert = require('assertthat');
 const color = require('../lib/color');
 
 suite('color', () => {
-  test('is a function', (done) => {
+  test('is a function.', (done) => {
     assert.that(color).is.ofType('function');
     done();
   });
