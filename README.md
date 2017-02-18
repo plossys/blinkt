@@ -82,8 +82,16 @@ docker run -it -e 'COLORS={"plossys/foo:v1": [255, 0, 0],"plossys/foo:v2": [0, 2
 
 To assign a color to *all* versions of an image, just omit the tag.
 
-This command shows all containers of `plossys/foo` in blue, regardless of the tag:
+This command shows all containers of `plossys/foo` in green, regardless of the tag:
 
 ```
-docker run -it -e 'COLORS={"plossys/foo": [0, 0, 255]' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+docker run -it -e 'COLORS={"plossys/foo": [255, 0, 0]' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+```
+
+If you define colors for an image with and without tags, an exact match takes precedence.
+
+This command shows containers running `v1` of `plossys/foo` in red and any other running the image in green:
+
+```
+docker run -it -e 'COLORS={"plossys/foo:v1": [255, 0, 0],"plossys/foo": [0, 255, 0]}' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
 ```
