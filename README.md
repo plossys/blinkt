@@ -64,7 +64,7 @@ docker run -it -e "INTERVAL=500" -v /sys:/sys -v /var/run/docker.sock:/var/run/d
 
 ### COLORS
 
-To define custom colors for containers, set the `COLORS` environment variable. It must be a JSON object with image names as properties. Each property must contain an array with 3 values ranging from 0 to 255, that represent the values for `red`, `green`, `blue`.
+To define custom colors for containers, set the `COLORS` environment variable. It must be a JSON object with image names as properties. Each property must contain an array with 3 values ranging from 0 to 255, that represent the values for red, green, blue.
 
 To set the color for containers with the image `plossys/foo:v1` to red, type:
 
@@ -72,7 +72,7 @@ To set the color for containers with the image `plossys/foo:v1` to red, type:
 docker run -it -e 'COLORS={"plossys/foo:v1": [255, 0, 0]}' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
 ```
 
-The COLORS variable will be filtered for the whole image name of a container. So, a container running `plossys/foo:v2` will *not* be colored in red because the tag does not match. So, you can assign different colors to different versions of the same image.
+The COLORS variable will be filtered using the image name and tag of a container. So, a container running `plossys/foo:v2` will *not* be colored in red because the tag does not match. This allows you to assign different colors to different versions of the same image.
 
 This command shows containers running `v1` of `plossys/foo` in red and `v2` in green:
 
