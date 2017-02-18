@@ -13,14 +13,14 @@ Visualizes the running Docker containers with Blinkt! LED strip.
 To start the container, type:
 
 ```
-docker run -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+docker run -it -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
 ```
 
 ## Swarm mode
 
-To start it in a Docker swarm, type:
-
 ### Start service
+
+To start it in a Docker swarm, type:
 
 ```bash
 docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock plossys/blinkt:0.0.3
@@ -42,4 +42,12 @@ docker service create --name blinkt --update-delay 10s --mount type=bind,src=/sy
 
 ```bash
 docker service update --image plossys/blinkt:0.0.5 blinkt
+```
+
+### Global service
+
+To run it on _all nodes_ in a swarm cluster, type:
+
+```bash
+docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock --mode global plossys/blinkt:0.0.3
 ```
