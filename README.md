@@ -1,7 +1,10 @@
 # PLOSSYS Blinkt!
+<<<<<<< HEAD
 
+=======
+[![This image on DockerHub](https://img.shields.io/docker/pulls/plossys/blinkt.svg)](https://hub.docker.com/r/plossys/blinkt/)
+>>>>>>> master
 [![Build Status](https://travis-ci.org/plossys/blinkt.svg?branch=master)](https://travis-ci.org/plossys/blinkt)
-[![](https://images.microbadger.com/badges/image/plossys/blinkt.svg)](https://microbadger.com/images/plossys/blinkt "Get your own image badge on microbadger.com")
 
 Signals the running Docker containers with Blinkt! LED strip.
 
