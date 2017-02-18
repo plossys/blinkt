@@ -1,8 +1,18 @@
 'use strict';
 
 const assert = require('assertthat');
+const getenv = require('getenv');
+const nodeenv = require('nodeenv');
+const proxyquire = require('proxyquire');
 
-const color = require('../../lib/color');
+const sanitize = require('../../lib/color/sanitize');
+
+const color = proxyquire('../../lib/color', {
+  './env' () {
+    // Do not cache the result for the tests
+    return sanitize(getenv('COLORS', '{}'));
+  }
+});
 
 suite('color', () => {
   test('is a function.', (done) => {
@@ -38,5 +48,31 @@ suite('color', () => {
 
     assert.that(color('bar')).is.not.equalTo(expected);
     done();
+  });
+
+  suite('with COLORS environment variable', () => {
+    test('returns the color for a exact match', (done) => {
+      const colors = {
+        'foo/bar:v1.0': [1, 2, 3]
+      };
+
+      nodeenv('COLORS', JSON.stringify(colors), (restore) => {
+        assert.that(color('foo/bar:v1.0')).is.equalTo([1, 2, 3]);
+        restore();
+        done();
+      });
+    });
+
+    test('returns the color for a matching image without tag', (done) => {
+      const colors = {
+        'foo/bar': [1, 2, 3]
+      };
+
+      nodeenv('COLORS', JSON.stringify(colors), (restore) => {
+        assert.that(color('foo/bar:v1.0')).is.equalTo([1, 2, 3]);
+        restore();
+        done();
+      });
+    });
   });
 });
