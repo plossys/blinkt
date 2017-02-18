@@ -54,7 +54,7 @@ docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=
 
 ## Environment variables
 
-You can change the update interval via the environment variable `INTERVAL`. To change it to 0.5s (500 milliseconds), type:
+By default, the container list is updated every second. You can change the update interval via the environment variable `INTERVAL`. To set it to 0.5s (500 milliseconds), type:
 
 ```
 docker run -it -e "INTERVAL=500" -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
