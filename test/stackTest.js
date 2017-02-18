@@ -42,11 +42,11 @@ suite('stack', () => {
 
     setTimeout(() => {
       assert.that(blinktColors).is.equalTo([
-        {
-          red: 198,
-          green: 140,
-          blue: 1
-        }
+        [
+          198,
+          140,
+          1
+        ]
       ]);
       done();
     }, 10);

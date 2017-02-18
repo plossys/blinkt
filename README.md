@@ -46,7 +46,7 @@ docker service update --image plossys/blinkt:0.0.5 blinkt
 
 ### Global service
 
-To run it on _all nodes_ in a swarm cluster, type:
+To run it on *all nodes* in a swarm cluster, type:
 
 ```bash
 docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock --mode global plossys/blinkt:0.0.3
@@ -54,8 +54,36 @@ docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=
 
 ## Environment variables
 
+### INTERVAL
+
 By default, the container list is updated every second. You can change the update interval via the environment variable `INTERVAL`. To set it to 0.5s (500 milliseconds), type:
 
 ```
 docker run -it -e "INTERVAL=500" -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+```
+
+### COLORS
+
+To define custom colors for containers, set the `COLORS` environment variable. It must be a JSON object with image names as properties. Each property must contain an array with 3 values ranging between 0 and 255.
+
+To set the color for containers with the image `plossys/foo:v1` to red, type:
+
+```
+docker run -it -e 'COLORS={"plossys/foo:v1": [255, 0, 0]}' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+```
+
+The COLORS variable will be filtered for the whole image name of a container. So, a container running `plossys/foo:v2` will *not* be colored in red because the tag does not match. So, you can assign different colors to different versions of the same image.
+
+This command shows containers running `v1` of `plossys/foo` in red and `v2` in green:
+
+```
+docker run -it -e 'COLORS={"plossys/foo:v1": [255, 0, 0],"plossys/foo:v2": [0, 255, 0]}' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
+```
+
+To assign a color to *all* versions of an image, just omit the tag.
+
+This command shows all containers of `plossys/foo` in blue, regardless of the tag:
+
+```
+docker run -it -e 'COLORS={"plossys/foo": [0, 0, 255]' -v /sys:/sys -v /var/run/docker.sock:/var/run/docker.sock plossys/blinkt
 ```

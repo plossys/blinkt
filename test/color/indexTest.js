@@ -2,7 +2,7 @@
 
 const assert = require('assertthat');
 
-const color = require('../lib/color');
+const color = require('../../lib/color');
 
 suite('color', () => {
   test('is a function.', (done) => {
@@ -18,11 +18,11 @@ suite('color', () => {
   });
 
   test('returns a color.', (done) => {
-    assert.that(color('foo')).is.equalTo({
-      red: 198,
-      green: 140,
-      blue: 1
-    });
+    assert.that(color('foo')).is.equalTo([
+      198,
+      140,
+      1
+    ]);
     done();
   });
 
