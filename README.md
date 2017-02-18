@@ -1,13 +1,14 @@
 # PLOSSYS Blinkt!
+
 [![Build Status](https://travis-ci.org/plossys/blinkt.svg?branch=master)](https://travis-ci.org/plossys/blinkt)
 [![](https://images.microbadger.com/badges/image/plossys/blinkt.svg)](https://microbadger.com/images/plossys/blinkt "Get your own image badge on microbadger.com")
 
-Show a cycling rainbow with Blinkt! LED strip.
+Signals the running Docker containers with Blinkt! LED strip.
 
 - [Dockerfile.amd64](https://github.com/plossys/blinkt/blob/master/Dockerfile.amd64)
 - [Dockerfile.arm](https://github.com/plossys/blinkt/blob/master/Dockerfile.arm)
 
-## Build locally
+## Run locally
 
 ```bash
 npm install

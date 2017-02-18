@@ -2,4 +2,4 @@ FROM node:7.4.0-slim
 
 WORKDIR /code
 COPY tmp /code
-CMD ["node", "app.js"]
+CMD ["node", "bin/app.js"]
