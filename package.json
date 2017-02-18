@@ -1,17 +1,41 @@
 {
   "name": "plossys-blinkt",
-  "author": "SEAL Systems",
   "description": "PLOSSYS Blinkt!",
   "version": "0.1.6",
+  "author": {
+    "name": "SEAL Systems AG",
+    "email": "opensource@sealsystems.de",
+    "url": "https://www.sealsystems.de"
+  },
+  "license": "MIT",
   "keywords": [
     "blinkt"
   ],
-  "private": false,
+  "scripts": {
+    "bot": "bot",
+    "release": "bot release && npm publish",
+    "release-minor": "bot release --type minor && npm publish",
+    "release-major": "bot release --type major && npm publish",
+    "test": "bot test-units",
+    "coverage": "istanbul cover _mocha -- --recursive --ui tdd ",
+    "report": "npm run coverage && if [[ $OSTYPE == darwin* ]]; then open=open; else open=xdg-open; fi && $open coverage/lcov-report/index.html"
+  },
   "dependencies": {
+    "dockerode": "2.3.1",
     "node-blinkt": "sealsystems/node-blinkt#sysfs"
+  },
+  "devDependencies": {
+    "assertthat": "0.8.3",
+    "eslint-config-seal": "0.0.9",
+    "proxyquire": "1.7.11",
+    "roboter": "0.14.4",
+    "roboter-server": "0.14.4"
   },
   "engines": {
     "node": "*"
   },
-  "main": "app.js"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sealsystems/seal-streamparser.git"
+  }
 }
