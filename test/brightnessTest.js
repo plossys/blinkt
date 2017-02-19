@@ -2,7 +2,7 @@
 
 const assert = require('assertthat');
 
-const brightness = require('../../lib/brightness');
+const brightness = require('../lib/brightness');
 
 /* eslint-disable camelcase */
 const mockContainer = function () {

@@ -5,9 +5,9 @@ const getenv = require('getenv');
 const nodeenv = require('nodeenv');
 const proxyquire = require('proxyquire');
 
-const sanitize = require('../../lib/color/sanitize');
+const sanitize = require('../lib/env/sanitize');
 
-const color = proxyquire('../../lib/color', {
+const color = proxyquire('../lib/color', {
   './env' () {
     // Do not cache the result for the tests
     return sanitize(getenv('COLORS', '{}'));

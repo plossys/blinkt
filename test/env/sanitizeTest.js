@@ -2,7 +2,7 @@
 
 const assert = require('assertthat');
 
-const sanitize = require('../../lib/color/sanitize');
+const sanitize = require('../../lib/env/sanitize');
 
 suite('sanitize', () => {
   test('is a function.', (done) => {

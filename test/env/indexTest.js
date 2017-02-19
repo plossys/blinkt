@@ -2,7 +2,7 @@
 
 const assert = require('assertthat');
 
-const env = require('../../lib/color/env');
+const env = require('../../lib/env');
 
 suite('env', () => {
   test('is a function.', (done) => {
