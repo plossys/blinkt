@@ -21,6 +21,7 @@
     "report": "npm run coverage && if [[ $OSTYPE == darwin* ]]; then open=open; else open=xdg-open; fi && $open coverage/lcov-report/index.html"
   },
   "dependencies": {
+    "async": "^2.1.4",
     "dockerode": "2.3.1",
     "getenv": "^0.7.0",
     "node-blinkt": "sealsystems/node-blinkt#sysfs"
