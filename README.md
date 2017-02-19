@@ -3,10 +3,20 @@
 [![Build Status](https://travis-ci.org/plossys/blinkt.svg?branch=master)](https://travis-ci.org/plossys/blinkt)
 [![This image on DockerHub](https://img.shields.io/docker/pulls/plossys/blinkt.svg)](https://hub.docker.com/r/plossys/blinkt/)
 
-Visualizes the running Docker containers with Blinkt! LED strip.
+Visualizes the running Docker containers with Blinkt! LED strip. Each container is associated with a color and the CPU usage of the container is indicated by the brightness.
 
 - [Dockerfile.amd64](https://github.com/plossys/blinkt/blob/master/Dockerfile.amd64)
 - [Dockerfile.arm](https://github.com/plossys/blinkt/blob/master/Dockerfile.arm)
+
+## Start locally
+
+To run the app, type:
+
+```
+node bin/app.js
+```
+
+If the platform is not supported by Blinkt!, the calculated colors are printed to the console. So, you can easily debug it.
 
 ## Start the Docker container
 

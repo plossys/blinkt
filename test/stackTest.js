@@ -9,6 +9,13 @@ const MockDocker = function () {
   this.listContainers = function (callback) {
     callback(null, images);
   };
+  this.getContainer = function () {
+    return {
+      stats (container, callback) {
+        callback(null);
+      }
+    };
+  };
 };
 const stack = proxyquire('../lib/stack', {
   dockerode: MockDocker,
@@ -45,7 +52,8 @@ suite('stack', () => {
         [
           198,
           140,
-          1
+          1,
+          0.1
         ]
       ]);
       done();
