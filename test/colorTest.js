@@ -51,7 +51,7 @@ suite('color', () => {
   });
 
   suite('with COLORS environment variable', () => {
-    test('returns the color for a exact match', (done) => {
+    test('returns the color for a exact match.', (done) => {
       const colors = {
         'foo/bar:v1.0': [1, 2, 3]
       };
@@ -63,13 +63,25 @@ suite('color', () => {
       });
     });
 
-    test('returns the color for a matching image without tag', (done) => {
+    test('returns the color for a matching image without tag.', (done) => {
       const colors = {
         'foo/bar': [1, 2, 3]
       };
 
       nodeenv('COLORS', JSON.stringify(colors), (restore) => {
         assert.that(color('foo/bar:v1.0')).is.equalTo([1, 2, 3]);
+        restore();
+        done();
+      });
+    });
+
+    test('returns the color for a matching image without tag delimited by \'@\'.', (done) => {
+      const colors = {
+        'foo/bar': [1, 2, 3]
+      };
+
+      nodeenv('COLORS', JSON.stringify(colors), (restore) => {
+        assert.that(color('foo/bar@sha256:123456789')).is.equalTo([1, 2, 3]);
         restore();
         done();
       });
