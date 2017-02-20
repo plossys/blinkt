@@ -65,7 +65,7 @@ docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=
 To show debug messages, set the `DEBUG` environment variable:
 
 ```
-DEBUG=* node bin/app.js
+DEBUG=app:* node bin/app.js
 ```
 
 ## Environment variables
