@@ -16,8 +16,6 @@ To run the app, type:
 node bin/app.js
 ```
 
-If the platform is not supported by Blinkt!, the calculated colors are printed to the console. So, you can easily debug it.
-
 ## Start the Docker container
 
 To start the container, type:
@@ -60,6 +58,14 @@ To run it on *all nodes* in a swarm cluster, type:
 
 ```bash
 docker service create --name blinkt --mount type=bind,src=/sys,dst=/sys --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock --mode global plossys/blinkt:0.0.3
+```
+
+## Debugging
+
+To show debug messages, set the `DEBUG` environment variable:
+
+```
+DEBUG=* node bin/app.js
 ```
 
 ## Environment variables
