@@ -12,6 +12,11 @@ if [ $ARCH == "amd64" ]; then
     sleep 15
     echo "Try again"
   done
+  until docker run --rm stefanscherer/winspector plossys/blinkt:linux-arm64-$TRAVIS_TAG
+  do
+    sleep 15
+    echo "Try again"
+  done
   set -e
 
   echo "Downloading manifest-tool"
