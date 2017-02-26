@@ -4,12 +4,6 @@ set -e
 docker tag blinkt plossys/blinkt:linux-$ARCH-$TRAVIS_TAG
 docker push plossys/blinkt:linux-$ARCH-$TRAVIS_TAG
 
-if [ $ARCH == "arm" ]; then
-  # workaround until Travis can build arm64
-  docker tag blinkt plossys/blinkt:linux-arm64-$TRAVIS_TAG
-  docker push plossys/blinkt:linux-arm64-$TRAVIS_TAG
-fi
-
 if [ $ARCH == "amd64" ]; then
   set +e
   echo "Waiting for other images plossys/blinkt:linux-arm-$TRAVIS_TAG"
