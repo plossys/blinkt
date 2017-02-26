@@ -1,7 +1,9 @@
 #!/bin/bash
+set -e
+
 if [ $ARCH != "amd64" ]; then
   # prepare qemu
-  docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  docker run --rm --privileged hypriot/qemu-register
 fi
 
 if [ -d tmp ]; then
