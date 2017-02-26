@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 if [ $ARCH != "amd64" ]; then
   # prepare qemu
   docker run --rm --privileged multiarch/qemu-user-static:register --reset

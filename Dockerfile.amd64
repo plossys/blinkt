@@ -1,4 +1,4 @@
-FROM node:7.4.0-slim
+FROM node:6.10.0-alpine
 
 WORKDIR /code
 COPY tmp /code
