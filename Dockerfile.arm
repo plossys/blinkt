@@ -1,6 +1,5 @@
-FROM hypriot/rpi-node:7.4.0-slim
+FROM hypriot/rpi-node:6.10.0-alpine
 
 WORKDIR /code
 COPY tmp/ /code
-ENTRYPOINT []
 CMD ["node", "bin/app.js"]
