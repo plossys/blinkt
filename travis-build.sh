@@ -3,7 +3,9 @@ set -e
 
 if [ $ARCH != "amd64" ]; then
   # prepare qemu
-  docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  if [ ! -z "$TRAVIS" ]; then
+    docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  fi
 
   if [ $ARCH == "arm64" ]; then
     # prepare qemu binary
@@ -13,7 +15,9 @@ if [ $ARCH != "amd64" ]; then
 fi
 
 if [ -d tmp ]; then
+  set +e
   docker rm build
+  set -e
   rm -rf tmp
 fi
 
